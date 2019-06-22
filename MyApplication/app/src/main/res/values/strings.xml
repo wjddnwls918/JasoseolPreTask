@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+
+    <string name="main_text_title">맞춤 공고</string>
+    <string name="main_text_hint">아직 확인하지 않은 맞춤 공고들이 남아있어요.</string>
+
+</resources>
