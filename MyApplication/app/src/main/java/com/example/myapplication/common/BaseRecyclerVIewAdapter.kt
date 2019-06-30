@@ -1,12 +1,9 @@
 package com.example.myapplication.common
 
-import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import androidx.annotation.NonNull
 
-abstract class BaseRecyclerVIewAdapter<T, VH : RecyclerView.ViewHolder?>(open var dataSet:MutableList<T>?) : RecyclerView.Adapter<VH>()
-{
+abstract class BaseRecyclerVIewAdapter<T, VH : RecyclerView.ViewHolder?>(open var dataSet: MutableList<T>?) :
+    RecyclerView.Adapter<VH>() {
     fun getItem(position: Int): T? {
         return if (dataSet == null) null else dataSet!![position]
     }
@@ -63,12 +60,20 @@ abstract class BaseRecyclerVIewAdapter<T, VH : RecyclerView.ViewHolder?>(open va
         }
     }
 
+    /**
+     * Remove item
+     */
+    fun removeItem(position: Int) {
+        dataSet!!.removeAt(position)
+        notifyDataSetChanged()
+    }
+
     fun removeItem(item: T) {
         val position = getItemPosition(item)
 
-        dataSet!!.removeAt(position)
-        notifyItemRemoved(position)
+        removeItem(position)
     }
+
 
     /**
      * Set items.
@@ -78,12 +83,14 @@ abstract class BaseRecyclerVIewAdapter<T, VH : RecyclerView.ViewHolder?>(open va
         notifyDataSetChanged()
     }
 
+
+    /**
+     * Get items.
+     */
+
     fun getItemPosition(item: T): Int {
         return dataSet!!.indexOf(item)
     }
 
-    fun removeItem(position: Int) {
-        dataSet!!.removeAt(position)
-        notifyDataSetChanged()
-    }
+
 }
