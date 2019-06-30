@@ -1,45 +1,37 @@
 package com.example.myapplication.model
 
 import android.app.Application
-import android.util.Log
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
-import org.json.JSONArray
-import org.json.JSONObject
 import java.io.*
-import java.lang.reflect.Type
 
 
-class EnterRepository(var application: Application) {
+class EnterpriseRepository(var application: Application) {
 
     companion object {
-        private var INSTANCE: EnterRepository? = null
+        private var INSTANCE: EnterpriseRepository? = null
 
-        fun getInstance(application: Application): EnterRepository {
+        fun getInstance(application: Application): EnterpriseRepository {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
-            synchronized(EnterRepository::class) {
-                val instance = EnterRepository(application)
+            synchronized(EnterpriseRepository::class) {
+                val instance = EnterpriseRepository(application)
                 INSTANCE = instance
                 return instance
             }
         }
     }
 
-    fun getFromJson(): ArrayList<EnterInfo> {
-        var info: ArrayList<EnterInfo> = ArrayList()
+    fun getListFromJson(): ArrayList<EnterpriseInfo> {
+        var info: ArrayList<EnterpriseInfo> = ArrayList()
         val gson = GsonBuilder().create()
 
         try {
             val inputStream:InputStream = application.assets.open("Android.json")
             val inputString = inputStream.bufferedReader().use{it.readText()}
 
-            var list = gson.fromJson(inputString,Array<EnterInfo>::class.java).toList()
-
-            info.addAll(list)
+            info.addAll(gson.fromJson(inputString,Array<EnterpriseInfo>::class.java).toList())
 
         } catch (e: Exception) {
             e.printStackTrace()
