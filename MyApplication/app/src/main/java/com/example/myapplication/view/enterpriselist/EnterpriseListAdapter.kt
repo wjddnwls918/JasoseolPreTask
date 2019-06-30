@@ -1,13 +1,13 @@
-package com.example.myapplication.view
+package com.example.myapplication.view.enterpriselist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.common.BaseRecyclerVIewAdapter
 import com.example.myapplication.databinding.EnterItemBinding
-import com.example.myapplication.model.EnterInfo
+import com.example.myapplication.model.EnterpriseInfo
 
-class MainAdapter(dataSet: MutableList<EnterInfo>) : BaseRecyclerVIewAdapter<EnterInfo, MainAdapter.ViewHolder>(dataSet) {
+class EnterpriseListAdapter(dataSet: MutableList<EnterpriseInfo>) : BaseRecyclerVIewAdapter<EnterpriseInfo, EnterpriseListAdapter.ViewHolder>(dataSet) {
 
     override fun onBindView(holder: ViewHolder, position: Int) {
         holder.binding.enter = getItem(position)
