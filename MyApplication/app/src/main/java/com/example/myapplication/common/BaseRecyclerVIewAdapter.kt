@@ -65,7 +65,7 @@ abstract class BaseRecyclerVIewAdapter<T, VH : RecyclerView.ViewHolder?>(open va
      */
     fun removeItem(position: Int) {
         dataSet!!.removeAt(position)
-        notifyDataSetChanged()
+        notifyItemRemoved(position)
     }
 
     fun removeItem(item: T) {
